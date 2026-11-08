@@ -12,7 +12,7 @@ python -m src.build_taxonomy_v2    # repaired taxonomy -> taxonomy/taxonomy_v2.j
 python -m src.analysis             # final-system numbers, per-class, breakdowns, latency (trains on train.csv only)
 python -m src.make_predictions --name <your_name>   # trains on train+dev, writes submissions/<your_name>_predictions.csv
 ```
-`results/audit_dev300.csv` is a hand-made file (see src/make_audit_sample.py). `experiments/` holds the one-off scripts behind the
+`results/audit_dev300.csv` was relabelled by Claude (one AI annotator), typed in by hand rather than script-generated (see src/make_audit_sample.py). `experiments/` holds the one-off scripts behind the
 negative results (and-split/threshold, noise-handling variants, spelling normaliser).
 
 ## Layout
