@@ -1,0 +1,13 @@
+silver_label,model_says,rows
+delivery_delay,order_status,309
+talk_to_agent,out_of_scope,241
+order_status,delivery_delay,165
+account_help,change_address,147
+cancel_order,delivery_delay,146
+delivery_delay,cancel_order,115
+refund_request,cancel_order,105
+refund_request,payment_failed,95
+promo_code_issue,payment_failed,89
+wrong_item,refund_request,85
+wrong_item,missing_item,85
+missing_item,refund_request,76

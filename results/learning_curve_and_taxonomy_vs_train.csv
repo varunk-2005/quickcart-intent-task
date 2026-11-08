@@ -1,0 +1,6 @@
+training_data,n_examples,dev_silver_acc,dev_silver_macro_f1,audit300_acc,audit300_macro_f1
+taxonomy examples only,92,0.595,0.525,0.6867,0.5938
+train.csv sample,500,0.725,0.6562,0.82,0.7358
+train.csv sample,2000,0.818,0.7779,0.9067,0.826
+train.csv sample,8000,0.8785,0.8715,0.96,0.9441
+train.csv sample,30000,0.8968,0.894,0.9833,0.9808

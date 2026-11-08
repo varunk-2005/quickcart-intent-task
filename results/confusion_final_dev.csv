@@ -1,0 +1,13 @@
+,order_status,delivery_delay,cancel_order,refund_request,missing_item,wrong_item,payment_failed,promo_code_issue,change_address,account_help,talk_to_agent,out_of_scope
+order_status,498,19,2,2,0,0,0,0,0,0,4,0
+delivery_delay,47,470,14,0,3,0,3,1,2,2,4,0
+cancel_order,3,19,362,7,2,1,1,1,1,0,3,1
+refund_request,0,0,14,399,5,3,16,0,2,0,2,0
+missing_item,2,2,1,10,260,10,3,1,1,0,2,0
+wrong_item,1,0,2,5,8,184,0,1,2,1,4,1
+payment_failed,1,1,0,10,1,0,280,13,0,8,5,1
+promo_code_issue,2,1,0,0,2,1,14,179,0,1,4,3
+change_address,2,1,1,1,0,1,2,0,212,4,0,1
+account_help,0,2,0,2,1,0,7,2,18,172,6,2
+talk_to_agent,1,1,2,1,0,0,1,0,1,1,210,26
+out_of_scope,1,2,0,5,0,0,4,0,1,1,2,362

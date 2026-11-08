@@ -1,0 +1,15 @@
+breakdown,group,n,baseline_acc,final_acc,final_macro_f1
+len_bucket,1-5,403,0.417,0.873,0.844
+len_bucket,6-9,1713,0.45,0.903,0.9
+len_bucket,10-15,1133,0.41,0.898,0.891
+len_bucket,16-25,596,0.386,0.896,0.895
+len_bucket,26+,155,0.387,0.884,0.881
+hinglish,False,3259,0.44,0.898,0.893
+hinglish,True,741,0.35,0.895,0.895
+structure,multi-request or changed mind,418,0.275,0.897,0.816
+structure,single request / plain,3582,0.441,0.897,0.893
+info,also_agent,27,0.222,0.889,0.657
+info,also_first,172,0.291,0.89,0.753
+info,but_first,71,0.282,0.915,0.76
+info,none,3582,0.441,0.897,0.893
+info,revision,148,0.264,0.899,0.823

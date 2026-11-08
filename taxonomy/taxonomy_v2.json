@@ -1,0 +1,239 @@
+{
+  "version": 2,
+  "note": "Repaired from taxonomy.json using train.csv only (see src/build_taxonomy_v2.py).",
+  "intents": [
+    {
+      "name": "order_status",
+      "definition": "Asks where the order is / what stage it is at / ETA, with no complaint.",
+      "boundary_note": "A complaint that it is late is delivery_delay.",
+      "examples": [
+        "my app says confirmed, what does that mean for delivery",
+        "I placed an order 20 minutes ago, any update?",
+        "has my order left the restaurant yet",
+        "track my order",
+        "where's my food",
+        "order status please",
+        "tracking link not showing, where is my order",
+        "order kahan hai mera",
+        "what is the current status of my delivery",
+        "has the rider been assigned yet",
+        "is my food on the way",
+        "when will the rider pick up my order",
+        "can I get an eta for my order",
+        "update on pls",
+        "is out for delivery",
+        "is my order packed",
+        "my order shows preparing what next",
+        "tracking link not showing where is my order",
+        "is the restaurant preparing my food"
+      ]
+    },
+    {
+      "name": "delivery_delay",
+      "definition": "Complains the order is late or slow, or says the promised time has passed.",
+      "boundary_note": "Neutral 'where is it / status' is order_status; an explicit 'cancel' is cancel_order.",
+      "examples": [
+        "you are late and the rider isn't picking up my calls",
+        "you promised 30 minutes, it's been 75",
+        "why is it delayed so much",
+        "rider has been stuck at the same place for 20 minutes",
+        "delivery late, I am really hungry",
+        "the delivery time keeps increasing",
+        "eta was 7 pm and it's 8 now",
+        "the order was supposed to be here already",
+        "my order is very late",
+        "why has my delivery not arrived yet",
+        "my food is late do something",
+        "waiting for ages where is the delivery",
+        "order abhi tak nahi aaya bahut der ho gayi",
+        "aaj delivery bahut late hai"
+      ]
+    },
+    {
+      "name": "cancel_order",
+      "definition": "Wants the order cancelled (also 'how do I cancel').",
+      "boundary_note": "Cancel + refund: order not yet delivered = cancel_order; delivered = refund_request.",
+      "examples": [
+        "cancel my order before it is prepared",
+        "cancel it please",
+        "cancel the order I made 5 minutes ago",
+        "I accidentally ordered, please cancel",
+        "I'd like to cancel this order and reorder",
+        "cancel the grocery order I just placed",
+        "I want to cancel my order",
+        "can you cancel the order, I changed my mind",
+        "how do i cancel an order",
+        "cancel the pending order",
+        "stop my order",
+        "i accidentally ordered please cancel",
+        "please call off my order",
+        "please cancel order"
+      ]
+    },
+    {
+      "name": "refund_request",
+      "definition": "Wants money back / asks about a refund or its status.",
+      "boundary_note": "Refund for a delivered order. 'Charged twice, refund one' sits next to payment_failed - keep with payment_failed.",
+      "examples": [
+        "refund the amount for the late order",
+        "can I get a refund for the damaged groceries",
+        "refund credited? I don't see it",
+        "my refund is stuck",
+        "the food was inedible, I want a refund",
+        "please process my refund",
+        "I want compensation and a refund for this order",
+        "initiate a refund for my order",
+        "order was delivered cold, refund please",
+        "refund not received yet",
+        "i'd like a refund for the delivery fee",
+        "please refund my money for order",
+        "refund status for",
+        "the food was inedible i want a refund",
+        "order was delivered cold refund please"
+      ]
+    },
+    {
+      "name": "missing_item",
+      "definition": "Something ordered did not arrive or the order is incomplete.",
+      "boundary_note": "Something DIFFERENT arrived = wrong_item.",
+      "examples": [
+        "I did not receive my fries",
+        "half my groceries are missing",
+        "my order is incomplete",
+        "the delivery had only the main course, no sides",
+        "I ordered 3 things but only got 2",
+        "bag mein ek item nahi hai",
+        "the bag was missing the sauce packets",
+        "missing items again",
+        "an item is missing from my order"
+      ]
+    },
+    {
+      "name": "wrong_item",
+      "definition": "Received a different item, another customer's order, or the wrong variant.",
+      "boundary_note": "Something absent = missing_item.",
+      "examples": [
+        "this is the wrong order, please fix it",
+        "I asked for veg and got non-veg",
+        "someone else's food came to me",
+        "I received the wrong item",
+        "they delivered the wrong dish",
+        "the order I received belongs to another customer",
+        "mera order nahi hai ye",
+        "swapped items in my order"
+      ]
+    },
+    {
+      "name": "payment_failed",
+      "definition": "Payment error, money deducted without an order, stuck/declined transaction.",
+      "boundary_note": "Problems with a coupon/discount are promo_code_issue; payment page failing at login OTP is account_help.",
+      "examples": [
+        "charged twice, please refund one payment",
+        "upi payment stuck on processing",
+        "money got deducted but the order was not placed",
+        "paisa kat gaya par order nahi hua",
+        "payment gateway error",
+        "card declined at checkout",
+        "I paid but it shows unpaid",
+        "transaction failed, what do I do",
+        "the app says payment unsuccessful",
+        "transaction failed what do i do",
+        "error while paying for",
+        "i can't pay for my order",
+        "the payment page crashed",
+        "payment fail ho raha hai"
+      ]
+    },
+    {
+      "name": "promo_code_issue",
+      "definition": "Coupon / promo / offer / discount will not apply, expired, or vanished.",
+      "boundary_note": "A failed payment is payment_failed even if a coupon was used.",
+      "examples": [
+        "the discount was not applied",
+        "coupon code says invalid",
+        "applied voucher but no discount",
+        "offer not applied on my order",
+        "first order discount not showing",
+        "why can't use my coupon",
+        "promo kaam nahi kar raha",
+        "can't redeem my coupon"
+      ]
+    },
+    {
+      "name": "change_address",
+      "definition": "Wants the delivery address or drop point changed or corrected.",
+      "boundary_note": "Profile changes (name, phone, e-mail) are account_help.",
+      "examples": [
+        "change the address on my account",
+        "address change please",
+        "need to edit my delivery location",
+        "address galat dal diya, change karo",
+        "please redirect my order to another address",
+        "can you deliver to a different address",
+        "I want it sent to my friend's place instead",
+        "the pin on the map is wrong",
+        "my landmark is wrong can i fix it",
+        "i entered the wrong address",
+        "i moved how do i update my saved address"
+      ]
+    },
+    {
+      "name": "account_help",
+      "definition": "Login, password, OTP for login, account locked/deleted, profile details (name, email, phone), app settings.",
+      "boundary_note": "Delivery address changes are change_address.",
+      "examples": [
+        "account suspended why",
+        "how to change language in the app",
+        "my saved cards are missing",
+        "unable to verify otp",
+        "password reset link not working",
+        "otp is not coming for login",
+        "forgot my password",
+        "how do reset my password",
+        "verify my email",
+        "how do turn off notifications",
+        "can't log in"
+      ]
+    },
+    {
+      "name": "talk_to_agent",
+      "definition": "Only asks for a human / supervisor / escalation / support number.",
+      "boundary_note": "If another real request is also present, the other request wins (rule 5).",
+      "examples": [
+        "talk to executive",
+        "I'd like to speak with a supervisor",
+        "customer care number do",
+        "I want to escalate this to a person",
+        "customer service please",
+        "someone from your team should call me",
+        "put me through to a human agent",
+        "insaan se baat karni hai",
+        "stop the bot i want an agent",
+        "is there a phone number for support",
+        "can i speak to a manager",
+        "i need live support"
+      ]
+    },
+    {
+      "name": "out_of_scope",
+      "definition": "Anything not about QuickCart orders, accounts or payments: small talk, greetings/thanks alone, gibberish, other companies, services QuickCart does not offer (gift cards, loyalty points, tax invoices, tipping, restaurant feedback).",
+      "boundary_note": "A greeting plus a real request takes the request's label.",
+      "examples": [
+        "translate hello to french",
+        "where can I buy a laptop",
+        "how do I book a flight",
+        "what are the best restaurants in the city",
+        "my car won't start",
+        "what is the capital of France",
+        "I want to book a hotel",
+        "thanks",
+        "who is the prime minister",
+        "what is 15 times 12",
+        "which phone should I buy",
+        "good morning",
+        "tell me a joke",
+        "can you help me with my homework"
+      ]
+    }
+  ]
+}

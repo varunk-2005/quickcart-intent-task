@@ -1,0 +1,13 @@
+intent,examples_v1,examples_v2
+order_status,13,19
+delivery_delay,10,14
+cancel_order,8,14
+refund_request,9,15
+missing_item,7,9
+wrong_item,8,8
+payment_failed,8,14
+promo_code_issue,0,8
+change_address,7,11
+account_help,0,11
+talk_to_agent,8,12
+out_of_scope,14,14

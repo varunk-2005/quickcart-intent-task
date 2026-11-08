@@ -1,0 +1,5 @@
+example,listed_under,problem
+where's my food,delivery_delay,also listed under order_status; a bare 'where is it' is a status question
+my order is incomplete,wrong_item,also under missing_item; incomplete = something absent
+an item is missing from my order,wrong_item,something absent is missing_item (rule 4)
+"cancel my food order, taking too long",delivery_delay,explicit request to cancel -> cancel_order (rule 1)

@@ -1,0 +1,25 @@
+id,experiment,dev_silver_acc,dev_silver_macro_f1,audit300_acc,audit300_macro_f1,adopted,notes,produced_by
+E0,Starter baseline as shipped (its 'macro-F1' is really weighted-F1),0.4233,0.4105,0.4767,0.4368,no,reported 0.446 = weighted-F1; true macro-F1 0.411,src.run_experiments
+E0b,"Starter matcher, threshold 0.10 -> 0.03 (original taxonomy v1)",0.557,0.486,0.643,0.543,no,threshold alone: +13 pts accuracy,src.analysis
+E0c,"Starter matcher + repaired taxonomy v2, threshold 0.03",0.665,0.65,0.78,0.76,no,taxonomy repair + threshold: +24 pts accuracy over E0,src.analysis
+E1,"LR word+char TF-IDF trained on train.csv, raw text",0.853,0.845,0.927,0.915,step,uses the 30k labelled rows instead of 92 examples,src.run_experiments
+E2,E1 + filler-sentence removal (rule 7),0.86,0.854,0.933,0.921,step,21 filler sentences found in the data,src.run_experiments
+E3,"E2 + changed-mind / first-request / agent rules (rules 1,2,5)",0.889,0.885,0.97,0.962,step,largest single gain after the switch to supervised,src.run_experiments
+M1,E3 with LinearSVC C=0.5 instead of LR,0.896,0.893,0.983,0.981,yes,chosen: best and fastest,src.run_experiments
+M2,E3 with ComplementNB,0.88,0.874,0.967,0.955,no,,src.run_experiments
+M3,E3 with LR C=1,0.89,0.886,0.977,0.971,no,,src.run_experiments
+M4,E3 with LR C=30 (less regularisation),0.87,0.864,0.947,0.933,no,over-fits label noise,src.run_experiments
+N1,"LR, drop train rows CV model contradicts (conf>=0.5)",0.893,0.89,0.973,0.966,no,,src.run_experiments
+N2,"LR, drop rows (conf>=0.7)",0.895,0.891,0.983,0.981,no,,src.run_experiments
+N3,"LR, drop rows (conf>=0.9)",0.892,0.889,0.973,0.973,no,,src.run_experiments
+N4,"LR, relabel rows (conf>=0.5)",0.887,0.881,0.963,0.95,no,,src.run_experiments
+N5,"LR, relabel rows (conf>=0.7)",0.893,0.889,0.98,0.973,no,,src.run_experiments
+N6,"LR, relabel rows (conf>=0.9)",0.893,0.89,0.973,0.973,no,,src.run_experiments
+V1,"SVC, no label cleaning",0.896,0.893,0.983,,no,handwritten typo probe (24 msgs) acc 0.67,experiments/noise_handling_variants.py
+V2,"SVC, drop suspected rows",0.897,0.894,0.983,,no,probe 0.75; drops 59% of account_help and 52% of promo_code_issue rows,experiments/noise_handling_variants.py
+V3,"SVC, class_weight=balanced",0.894,0.89,0.977,,no,probe 0.79; no gain on dev,experiments/noise_handling_variants.py
+V4,"SVC, relabel all suspected rows (conf>=0.7)",0.895,0.892,0.983,,yes,probe 0.83; keeps all rows; adopted,experiments/noise_handling_variants.py
+S1,'X and Y' gated split: first request wins (on V2 model),0.8985,0.8956,0.9933,0.9914,yes,from 0.8968/0.8938/0.9833/0.9837; fixes 3 of 5 audit errors,experiments/and_split_and_oos_threshold.py
+S2,Confidence threshold -> out_of_scope (margins -0.6..0.3),0.8968,0.8938,0.983,,no,every threshold >=-0.4 lowers accuracy; out_of_scope is already a learned class,experiments/and_split_and_oos_threshold.py
+S3,"Spelling normaliser (snap rare words to 515-word vocab, ratio>=80)",0.8962,0.8927,0.987,,no,"+0.1 pt dev, probe unchanged: char n-grams already absorb typos",experiments/spell_normaliser.py
+FINAL,Final system trained on train.csv only (relabel 0.7 + SVC + and-split),0.897,0.8935,0.99,0.9852,yes,predictions use train+dev for training,src.analysis

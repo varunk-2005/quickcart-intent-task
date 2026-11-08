@@ -1,0 +1,27 @@
+scope,silver_class,n,disagree,rate,ci95_low,ci95_high
+ALL dev (audit n=300),all,300,22,0.073,0.049,0.109
+by silver label (audit),account_help,12,2,0.167,0.047,0.448
+by silver label (audit),cancel_order,23,1,0.043,0.008,0.21
+by silver label (audit),change_address,17,1,0.059,0.01,0.27
+by silver label (audit),delivery_delay,43,5,0.116,0.051,0.245
+by silver label (audit),missing_item,24,5,0.208,0.092,0.405
+by silver label (audit),order_status,47,0,0.0,0.0,0.076
+by silver label (audit),out_of_scope,31,2,0.065,0.018,0.207
+by silver label (audit),payment_failed,20,2,0.1,0.028,0.301
+by silver label (audit),promo_code_issue,16,1,0.062,0.011,0.283
+by silver label (audit),refund_request,33,2,0.061,0.017,0.196
+by silver label (audit),talk_to_agent,22,1,0.045,0.008,0.218
+by silver label (audit),wrong_item,12,0,0.0,0.0,0.243
+train: CV model disagrees with label (conf>=0.7),account_help,388,228,0.588,,
+train: CV model disagrees with label (conf>=0.7),cancel_order,3265,283,0.087,,
+train: CV model disagrees with label (conf>=0.7),change_address,1862,97,0.052,,
+train: CV model disagrees with label (conf>=0.7),delivery_delay,4385,488,0.111,,
+train: CV model disagrees with label (conf>=0.7),missing_item,2278,200,0.088,,
+train: CV model disagrees with label (conf>=0.7),order_status,4383,238,0.054,,
+train: CV model disagrees with label (conf>=0.7),out_of_scope,3011,82,0.027,,
+train: CV model disagrees with label (conf>=0.7),payment_failed,2547,158,0.062,,
+train: CV model disagrees with label (conf>=0.7),promo_code_issue,325,168,0.517,,
+train: CV model disagrees with label (conf>=0.7),refund_request,3698,392,0.106,,
+train: CV model disagrees with label (conf>=0.7),talk_to_agent,2128,311,0.146,,
+train: CV model disagrees with label (conf>=0.7),wrong_item,1730,240,0.139,,
+train: CV model disagrees with label (conf>=0.7),all,30000,2885,0.096,,
