@@ -49,5 +49,5 @@ class IntentSystem:
                 if len(x.split()) < 3 or len(y.split()) < 3: continue
                 px, py = self._raw([x])[0][0], self._raw([y])[0][0]
                 if px != py and {px, py} != PAIR_OK and "out_of_scope" not in (px, py):
-                    pred[i] = px                                    # rule 1: first request wins
+                    pred[i] = py if px == "talk_to_agent" else px   # rule 1: first request wins; rule 5: a bare agent request loses
         return (pred, d.max(1)) if return_margin else pred
